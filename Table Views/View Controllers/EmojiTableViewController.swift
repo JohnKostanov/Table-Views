@@ -33,4 +33,10 @@ extension EmojiTableViewController /*: UITableViewDataSource */ {
         cellManager.configure(cell, with: emoji)
         return cell
     }
+    
+    override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        let movedEmoji = emojis.remove(at: sourceIndexPath.row)
+        emojis.insert(movedEmoji, at: destinationIndexPath.row)
+        tableView.reloadData()
+    }
 }
