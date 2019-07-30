@@ -18,6 +18,7 @@ class EmojiTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         emojis = Emoji.loadAll() ?? Emoji.loadDefaults()
+        navigationItem.leftBarButtonItem = editButtonItem
     }
 }
 // MARK: - UITableViewDataSource
@@ -27,7 +28,7 @@ extension EmojiTableViewController /*: UITableViewDataSource */ {
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let emoji = emojis[indexPath.row]
-        let cell = tableView.dequeueReusableCell(withIdentifier: "EmojiCell")!
+        let cell = tableView.dequeueReusableCell(withIdentifier: "EmojiCell")! as! EmojiCell
         
         cellManager.configure(cell, with: emoji)
         return cell

@@ -9,8 +9,9 @@
 import UIKit
 
 class CellManager {
-    func configure(_ cell: UITableViewCell, with emoji: Emoji) {
-        cell.textLabel?.text = emoji.symbol
-        cell.detailTextLabel?.text = emoji.name
+    func configure(_ cell: EmojiCell, with emoji: Emoji) {
+        cell.symbolLabel.text = emoji.symbol
+        cell.nameLabel.text = emoji.name
+        cell.descriptionLabel.text = emoji.description
     }
 }
