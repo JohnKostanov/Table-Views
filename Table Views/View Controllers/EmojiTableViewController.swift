@@ -39,4 +39,26 @@ extension EmojiTableViewController /*: UITableViewDataSource */ {
         emojis.insert(movedEmoji, at: destinationIndexPath.row)
         tableView.reloadData()
     }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        switch editingStyle {
+        case .delete:
+            emojis.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        case .insert:
+            break
+        case .none:
+            break
+        @unknown default:
+            print(#line, #function, "Unknown case in file \(#file)")
+            break
+        }
+    }
+}
+
+//MARK: - UITableViewDelegate
+extension EmojiTableViewController /*: UITableViewDelegate */ {
+    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return .delete
+    }
 }
