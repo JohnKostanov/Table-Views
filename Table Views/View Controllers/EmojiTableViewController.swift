@@ -20,6 +20,16 @@ class EmojiTableViewController: UITableViewController {
         emojis = Emoji.loadAll() ?? Emoji.loadDefaults()
         navigationItem.leftBarButtonItem = editButtonItem
     }
+    
+    // MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard segue.identifier == "EditSegue" else { return }
+        guard let selectedPath = tableView.indexPathForSelectedRow else { return }
+        
+        let emoji = emojis[selectedPath.row]
+        let destination = segue.destination as! AddEditTableViewController
+        destination.emoji = emoji
+    }
 }
 // MARK: - UITableViewDataSource
 extension EmojiTableViewController /*: UITableViewDataSource */ {
