@@ -40,8 +40,8 @@ class AddEditTableViewController: UITableViewController {
         emoji.usage = usageTextField.text ?? ""
     }
     
-    // MARK: - Actions
-    @IBAction func saveButtonPressed(_ sender: UIBarButtonItem) {
+    // MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         saveEmoji()
     }
 }

@@ -204,7 +204,18 @@
                             <outlet property="delegate" destination="3yA-CF-nLQ" id="MJN-MB-hAs"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Add" id="O4o-Ao-sat"/>
+                    <navigationItem key="navigationItem" title="Add" id="O4o-Ao-sat">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="CuB-lU-XU1">
+                            <connections>
+                                <segue destination="MKc-9Z-S5G" kind="unwind" unwindAction="unwind:" id="Y2D-aK-Cpk"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="E3R-cg-Wf3">
+                            <connections>
+                                <segue destination="MKc-9Z-S5G" kind="unwind" identifier="saveSegue" unwindAction="unwind:" id="klX-oC-z76"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="descriptionTextField" destination="Lzo-EM-iLp" id="UFD-hl-W5N"/>
                         <outlet property="nameTextField" destination="thz-xI-PeX" id="dx2-7p-nCZ"/>
@@ -213,6 +224,7 @@
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ewb-7W-WQ8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="MKc-9Z-S5G" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2012" y="123"/>
         </scene>
