@@ -14,18 +14,19 @@ class AddEditTableViewController: UITableViewController {
     @IBOutlet var nameTextField: UITextField!
     @IBOutlet var descriptionTextField: UITextField!
     @IBOutlet var usageTextField: UITextField!
+    @IBOutlet var saveItem: UIBarButtonItem!
     
-    // Mark: - Properties
+    // MARK: - Properties
     var emoji = Emoji()
     
     // MARK:- UIViewController Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         updateUI()
-        
+        saveItem.isEnabled = false
     }
     
-    // Mark: - Methods
+    // MARK: - Methods
     func updateUI() {
         symbolTextField.text = emoji.symbol
         nameTextField.text = emoji.name
@@ -44,4 +45,27 @@ class AddEditTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         saveEmoji()
     }
+    
+    // MARK: - Actions
+    @IBAction func symbolTFAction(_ sender: UITextField) {
+        if let text = sender.text {
+            if text.count == 1 {
+                saveItem.isEnabled = true
+            } else {
+                saveItem.isEnabled = false
+            }
+        }
+    }
+    
+    @IBAction func nameDescUsageTFAction(_ sender: UITextField) {
+        if let text = sender.text {
+            if text.count == 0 || text.count >= 25 || symbolTextField.text?.isEmpty == true {
+                saveItem.isEnabled = false
+            } else {
+                saveItem.isEnabled = true
+            }
+        }
+    }
+    
+    
 }

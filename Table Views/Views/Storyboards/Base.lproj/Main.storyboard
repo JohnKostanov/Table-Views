@@ -34,13 +34,13 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalCompressionResistancePriority="751" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oYu-5k-OCS">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalCompressionResistancePriority="751" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.10000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="oYu-5k-OCS">
                                             <rect key="frame" x="106" y="19" width="262" height="30"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wAx-mS-XoQ">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.20000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="wAx-mS-XoQ">
                                             <rect key="frame" x="106" y="56.5" width="262" height="20.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -57,7 +57,7 @@
                                         <constraint firstItem="wAx-mS-XoQ" firstAttribute="leading" secondItem="R9l-tM-DAa" secondAttribute="trailing" constant="20" id="VIF-km-SrB"/>
                                         <constraint firstItem="R9l-tM-DAa" firstAttribute="leading" secondItem="eBU-V5-wCi" secondAttribute="leadingMargin" id="XH8-1h-s6U"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="wAx-mS-XoQ" secondAttribute="bottom" priority="750" id="gEG-28-fuU"/>
-                                        <constraint firstItem="wAx-mS-XoQ" firstAttribute="top" secondItem="oYu-5k-OCS" secondAttribute="bottom" priority="250" constant="8" id="xu1-VJ-2Hl"/>
+                                        <constraint firstItem="wAx-mS-XoQ" firstAttribute="top" relation="lessThanOrEqual" secondItem="oYu-5k-OCS" secondAttribute="bottom" constant="8" id="xu1-VJ-2Hl"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -103,11 +103,14 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Please enter emoji simbol" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QCb-I9-5th">
+                                                <textField opaque="NO" contentMode="scaleToFill" restorationIdentifier="symbolTextFieldID" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Please enter one emoji simbol" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QCb-I9-5th">
                                                     <rect key="frame" x="20" y="11" width="374" height="22"/>
                                                     <nil key="textColor"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <action selector="symbolTFAction:" destination="3yA-CF-nLQ" eventType="editingChanged" id="Cqp-mx-Wjt"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -129,11 +132,14 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Please enter emoji name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="thz-xI-PeX">
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Please enter emoji name" textAlignment="natural" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="thz-xI-PeX">
                                                     <rect key="frame" x="20" y="11" width="374" height="22"/>
                                                     <nil key="textColor"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <action selector="nameDescUsageTFAction:" destination="3yA-CF-nLQ" eventType="editingChanged" id="0I0-3A-EYB"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -155,11 +161,14 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Please enter emoji description" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Lzo-EM-iLp">
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Please enter emoji description" textAlignment="natural" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="Lzo-EM-iLp">
                                                     <rect key="frame" x="20" y="11" width="374" height="22"/>
                                                     <nil key="textColor"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <action selector="nameDescUsageTFAction:" destination="3yA-CF-nLQ" eventType="editingChanged" id="MOh-bz-iYl"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -181,11 +190,14 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Please enter emoji usage" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="u3o-mm-GPg">
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Please enter emoji usage" textAlignment="natural" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="u3o-mm-GPg">
                                                     <rect key="frame" x="20" y="11" width="374" height="22"/>
                                                     <nil key="textColor"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <action selector="nameDescUsageTFAction:" destination="3yA-CF-nLQ" eventType="editingChanged" id="Q5G-c2-yxr"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -219,6 +231,7 @@
                     <connections>
                         <outlet property="descriptionTextField" destination="Lzo-EM-iLp" id="UFD-hl-W5N"/>
                         <outlet property="nameTextField" destination="thz-xI-PeX" id="dx2-7p-nCZ"/>
+                        <outlet property="saveItem" destination="E3R-cg-Wf3" id="l99-wz-iph"/>
                         <outlet property="symbolTextField" destination="QCb-I9-5th" id="DF7-Nl-WX0"/>
                         <outlet property="usageTextField" destination="u3o-mm-GPg" id="vdL-qo-95b"/>
                     </connections>
