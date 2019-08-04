@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Emoji {
+struct Emoji: Codable {
     var symbol: String
     var name: String
     var description: String
@@ -32,9 +32,6 @@ extension Emoji {
         ]
     }
     
-    static func loadAll() -> [Emoji]? {
-        return nil
-    }
     
     static func loadDefaults() -> [Emoji] {
         return all
