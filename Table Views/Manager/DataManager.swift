@@ -16,23 +16,18 @@ class DataManager {
     
     func loadEmojis() -> [Emoji]? {
         print(#line, #function, archiveURL ?? "nil")
+        guard let archiveURL = archiveURL else { return nil }
+        guard let encodedEmojis = try? Data(contentsOf: archiveURL) else { return nil } // Data считывает закодированные данные
         
-//        let decoder = PropertyListDecoder()
-//        if let decodedEmojis = try? decoder.decode([Emoji].self, from: encodedEmojis) {
-//            print(#line, #function)
-//            for (index, emoji) in decodedEmojis.enumerated() {
-//                print(index, ":", emoji)
-//            }
-//            print()
-//        }
-        
-        return nil
+        let decoder = PropertyListDecoder()
+        return try? decoder.decode([Emoji].self, from: encodedEmojis)
     }
-    
+        
     func saveEmojis(_ emojis: [Emoji]) {
+        guard let archiveURL = archiveURL else { return }
+        
         let encoder = PropertyListEncoder()
         guard let encodedEmojis = try? encoder.encode(emojis) else { return }
-        guard let archiveURL = archiveURL else { return }
         
         try? encodedEmojis.write(to: archiveURL, options: .noFileProtection)
     }
