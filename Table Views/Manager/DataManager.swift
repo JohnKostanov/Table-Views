@@ -17,7 +17,7 @@ class DataManager {
     func loadEmojis() -> [Emoji]? {
         print(#line, #function, archiveURL ?? "nil")
         guard let archiveURL = archiveURL else { return nil }
-        guard let encodedEmojis = try? Data(contentsOf: archiveURL) else { return nil } // Data считывает закодированные данные
+        guard let encodedEmojis = try? Data(contentsOf: archiveURL) else { return nil } // Data считывает закодированный файл
         
         let decoder = PropertyListDecoder()
         return try? decoder.decode([Emoji].self, from: encodedEmojis)
