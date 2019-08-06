@@ -42,6 +42,9 @@ class EmojiTableViewController: UITableViewController {
         let scene = makeScene()
         animationView.frame.size = scene.size
         animationView.presentScene(scene)
+        addEmoji(to: scene)
+        animateNodes(scene.children)
+        
     }
     
     override func viewDidLayoutSubviews() {
@@ -120,14 +123,14 @@ extension EmojiTableViewController {
             emojis.append(emoji)
             tableView.insertRows(at: [indexPath], with: .automatic)
         }
-      
+        
     }
 }
 
 extension EmojiTableViewController {
     func makeScene() -> SKScene {
         let minimumDimension = min(view.frame.width, view.frame.height)
-        let size = CGSize(width: minimumDimension, height: minimumDimension)
+        let size = CGSize(width: minimumDimension, height: 100)
         
         let scene = SKScene(size: size)
         scene.backgroundColor = .white
@@ -136,7 +139,7 @@ extension EmojiTableViewController {
     
     func addEmoji(to scene: SKScene) {
         let allEmoji: [Character] = ["👑", "💼", "🤓", "🍕", "🌮"]
-        let distancia = floor(scene.size.width / 4)
+        let distancia = floor(scene.size.width / 5)
         
         for (index, emoji) in allEmoji.enumerated() {
             let node = SKLabelNode()
@@ -155,5 +158,25 @@ extension SKLabelNode {
         
         verticalAlignmentMode = .center
         horizontalAlignmentMode = .center
+    }
+}
+
+extension EmojiTableViewController {
+    func animateNodes(_ nodes: [SKNode]) {
+        for (index, node) in nodes.enumerated() {
+            node.run(.sequence([
+                .wait(forDuration: TimeInterval(index) * 0.2),
+                .repeatForever(.sequence([
+                    .group([
+                        .sequence([
+                            .scale(to: 1.5, duration: 0.3),
+                            .scale(to: 1, duration: 0.3)
+                            ]),
+                        .rotate(byAngle: .pi * 2, duration: 0.6)
+                        ]),
+                    .wait(forDuration: 2)
+                    ]))
+                ]))
+        }
     }
 }
