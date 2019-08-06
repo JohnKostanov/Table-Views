@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SpriteKit
 
 class EmojiTableViewController: UITableViewController {
     
@@ -19,11 +20,35 @@ class EmojiTableViewController: UITableViewController {
         }
     }
     
+    private lazy var animationView = SKView()
+    
     // MARK: - UIViewController Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         emojis = dataManager.loadEmojis() ?? Emoji.loadDefaults()
         navigationItem.leftBarButtonItem = editButtonItem
+    }
+    
+    override func loadView() {
+        super.loadView()
+        view.addSubview(animationView)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        guard animationView.scene == nil else { return }
+        
+        let scene = makeScene()
+        animationView.frame.size = scene.size
+        animationView.presentScene(scene)
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        animationView.center.x = view.bounds.midX
+        animationView.center.y = view.bounds.midY
     }
     
     // MARK: - Navigation
@@ -96,5 +121,16 @@ extension EmojiTableViewController {
             tableView.insertRows(at: [indexPath], with: .automatic)
         }
       
+    }
+}
+
+extension EmojiTableViewController {
+    func makeScene() -> SKScene {
+        let minimumDimension = min(view.frame.width, view.frame.height)
+        let size = CGSize(width: minimumDimension, height: minimumDimension)
+        
+        let scene = SKScene(size: size)
+        scene.backgroundColor = .white
+        return scene
     }
 }
