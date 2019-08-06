@@ -133,4 +133,27 @@ extension EmojiTableViewController {
         scene.backgroundColor = .white
         return scene
     }
+    
+    func addEmoji(to scene: SKScene) {
+        let allEmoji: [Character] = ["👑", "💼", "🤓", "🍕", "🌮"]
+        let distancia = floor(scene.size.width / 4)
+        
+        for (index, emoji) in allEmoji.enumerated() {
+            let node = SKLabelNode()
+            node.renderEmoji(emoji)
+            node.position.y = floor(scene.size.height / 2)
+            node.position.x = distancia * (CGFloat(index) + 0.5)
+            scene.addChild(node)
+        }
+    }
+}
+
+extension SKLabelNode {
+    func renderEmoji(_ emoji: Character) {
+        fontSize = 50
+        text = String(emoji)
+        
+        verticalAlignmentMode = .center
+        horizontalAlignmentMode = .center
+    }
 }
