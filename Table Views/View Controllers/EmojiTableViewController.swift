@@ -51,7 +51,7 @@ class EmojiTableViewController: UITableViewController {
         super.viewDidLayoutSubviews()
         
         animationView.center.x = view.bounds.midX
-        animationView.center.y = view.bounds.midY
+        animationView.center.y = view.bounds.maxY - 30
     }
     
     // MARK: - Navigation
@@ -130,7 +130,7 @@ extension EmojiTableViewController {
 extension EmojiTableViewController {
     func makeScene() -> SKScene {
         let minimumDimension = min(view.frame.width, view.frame.height)
-        let size = CGSize(width: minimumDimension, height: 100)
+        let size = CGSize(width: minimumDimension, height: 80)
         
         let scene = SKScene(size: size)
         scene.backgroundColor = .white
