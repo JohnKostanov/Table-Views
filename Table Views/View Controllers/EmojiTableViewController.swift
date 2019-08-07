@@ -106,7 +106,7 @@ extension EmojiTableViewController /*: UITableViewDelegate */ {
     }
 }
 
-// Actions: - Actions
+// MARK: - Actions
 extension EmojiTableViewController {
     @IBAction func unwind(_ segue: UIStoryboardSegue) {
         guard segue.identifier == "saveSegue" else { return }
@@ -129,8 +129,8 @@ extension EmojiTableViewController {
 
 extension EmojiTableViewController {
     func makeScene() -> SKScene {
-        let minimumDimension = min(view.frame.width, view.frame.height)
-        let size = CGSize(width: minimumDimension, height: 80)
+        let maximumDimension = max(view.frame.width, view.frame.height)
+        let size = CGSize(width: maximumDimension, height: 80)
         
         let scene = SKScene(size: size)
         scene.backgroundColor = .white
